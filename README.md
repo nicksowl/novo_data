@@ -1,7 +1,12 @@
-# Vue 3 + Vite
+## Hello World for data visualisation
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+> I will write here something about app sometime
 
-## Recommended IDE Setup
+How does this looks like?
 
-- [VS Code](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar)
+This app has 2 views:
+    1. General 
+    2. Specific
+
+To-do:
+ - Check if postcss is connected to vite config

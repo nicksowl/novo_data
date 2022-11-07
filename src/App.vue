@@ -1,5 +1,13 @@
 <script setup>
+
 import HelloWorld from './components/HelloWorld.vue'
+import getDataJson from './services/apiGetData'
+
+import DashBoard from './components/DashBoard.vue'
+import Header from './components/Header.vue'
+
+import { ref } from 'vue'
+
 
 // header
   // nav bar
@@ -14,11 +22,13 @@ import HelloWorld from './components/HelloWorld.vue'
 
 
 
+
 </script>
 
 <template>
-  
-  <h1 class="text-center bg-red-100">lol</h1>
+
+  <Header />
+  <DashBoard />
 
 
 </template>
