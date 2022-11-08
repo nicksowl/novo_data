@@ -3,8 +3,9 @@
 import HelloWorld from './components/HelloWorld.vue'
 import getDataJson from './services/apiGetData'
 
-import DashBoard from './components/DashBoard.vue'
 import Header from './components/Header.vue'
+import DashBoard from './components/DashBoard.vue'
+import Footer from './components/Footer.vue'
 
 import { ref } from 'vue'
 
@@ -27,8 +28,12 @@ import { ref } from 'vue'
 
 <template>
 
-  <Header />
-  <DashBoard />
+  <div class="">
+    <Header />
+    <DashBoard />
+    <Footer />
+  </div>
+
 
 
 </template>

@@ -5,20 +5,28 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,vue}",
   ],
   theme: {
-    mytheme: {
-      "primary": "#5cb9e8",
-      "secondary": "#7ee5bc",
-      "accent": "#33a5f7",
-      "neutral": "#22343F",
-      "base-100": "#F7F7F7",
-      "info": "#597CD4",
-      "success": "#63E9B5",
-      "warning": "#F7A93B",
-      "error": "#EF5761",
-    },
     extend: {},
   },
-  plugins: [require("daisyui")],
+  daisyui: {
+    themes: [
+      {
+        mytheme: {
+          "primary": "#66CC8A",
+          "secondary": "#377CFB",
+          "accent": "#EA5234",
+          "neutral": "#333C4D",
+          "base-100": "#FFFFFF",
+          "info": "#3ABFF8",
+          "success": "#36D399",
+          "warning": "#FBBD23",
+          "error": "#F87272",
+        },
+      },
+    ],
+  },
+  plugins: [
+    require("daisyui")
+  ],
 }
 
 
