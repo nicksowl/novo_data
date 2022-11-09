@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from "vue";
 import Visualisation from './Visualisation.vue'
-import BarChart from './BarChart.vue'
 // Get json file using HTTP REST fetch or axios
 // import apiGetData from "../services/apiGetData";
 // Add check if json file is there and imported properly
@@ -70,6 +69,7 @@ function getDataSet() {
     if (!localSensor || !localBatch) {
         alert('No branch and no sensor data are selected.')
     } else {
+
         activeDataSet.value = batchesJson[localBatch][localSensor]
         dataDescription.value = activeDataSet.value['description']
         dataUnit.value = activeDataSet.value['unit']

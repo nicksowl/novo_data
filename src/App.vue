@@ -12,7 +12,6 @@ import Footer from './components/Footer.vue'
 // main
   // picker 
     // view 1
-
     // view 2 
 // footer
 
@@ -20,9 +19,9 @@ import Footer from './components/Footer.vue'
 
 <template>
 
-  <div class="">
+  <div class="flex flex-col justify-between h-screen">
     <Header />
-    <DashBoard />
+    <DashBoard class="h-screen" />
     <Footer />
   </div>
 

@@ -13,11 +13,61 @@ const props = defineProps({
     timestamps: Object
 })
 
+// time could be devided or shortened, like the pin itself
+// show of time under
+
 // Creating chart
 onMounted(() => {    
     const ctx = document.getElementById('myChart');
 
+    // Playing around
     const myChart = new Chart(ctx, {
+    type: 'bar',
+
+    data: {
+        labels: props.timestamps,
+
+        datasets: [{
+            label: `${props.description}(${props.unit}) dataset from batch "${props.batch}", sensor "${props.sensor}". From ${props.timestamps[0]} to ${props.timestamps[props.timestamps.length - 1]}`,
+            data: props.values,
+            // ---
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+        }, {
+            label: `Piska`,
+            data: [1, 2, 3, 4, 4, 1, 2, 3, 4, 4, 1, 2, 3, 4, 4, 1, 2, 3, 4, 4, 1, 2, 3, 4, 4,],
+            // ---
+        }]
+    },
+
+    options: {
+        scales: {
+            y: {
+                ticks: {
+                    callback: function(value, index, ticks) {
+                        return value + ' ' + props.unit;
+                    }
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                display: false
+            }
+        }
+    }
+
+    });
+
+})
+</script>
+
+
+
+
+    // const myChart = new Chart(ctx, {
+
+    // 1
         
     //     type: 'line',
     //     data: {
@@ -54,28 +104,28 @@ onMounted(() => {
     //     }
     // });
 
-        type: 'line',
-        data: {
-            labels: props.timestamps,
-            datasets: [{
-                label: `Batch "${props.batch}" - Sensor "${props.sensor}"`,
-                data: props.values,
-                fill: false,
-                borderColor: 'rgb(75, 192, 192)',
-                tension: 0.1,
-            }]
-        }
-    })
+    // 2
 
-})
+    //     type: 'line',
+    //     data: {
+    //         labels: props.timestamps,
+    //         datasets: [{
+    //             label: `Batch "${props.batch}" - Sensor "${props.sensor}"`,
+    //             data: props.values,
+    //             fill: false,
+    //             borderColor: 'rgb(75, 192, 192)',
+    //             tension: 0.1,
+    //         }]
+    //     }
+    // })
 
+// })
 
-</script>
 
 <template>
 
     <div>
-        <canvas id="myChart" aria-label="Test Diagram" role="img" width="400" height="400"></canvas>
+        <canvas class="" id="myChart" aria-label="Test Diagram" role="img"></canvas>
     </div>
 
     <!-- <div>
