@@ -1,11 +1,12 @@
 <script setup>
-// Get json sile HTTP REST using axios
+import { ref } from "vue";
+import Visualisation from './Visualisation.vue'
+import BarChart from './BarChart.vue'
+// Get json file using HTTP REST fetch or axios
 // import apiGetData from "../services/apiGetData";
-import { ref, onMounted, watch } from "vue";
-
 // Add check if json file is there and imported properly
 // import dataJson from '../assets/data/.data.json'
-import dataJson from '../../public/data/.data.json'
+import dataJson from '../../../public/data/.data.json'
 
 if(!dataJson) {
     alert('Dataset is not uploaded!')
@@ -32,6 +33,8 @@ let dataUnit = ref('')
 let dataValues = ref({})
 let dataTimestamps = ref({})
 
+let showVisualisation = ref(false)
+
 for(let name in batchesJson) {
     batchNames.push(name)
     for (let sensor in batchesJson[name]) {
@@ -41,10 +44,6 @@ for(let name in batchesJson) {
         } 
     }
 }
-
-onMounted(() => {
-
-})
 
 // Probably not correct way, but it works for now
 function getBatchValue(element) {
@@ -63,6 +62,7 @@ function resetActive() {
     activeSensor.value = ''
     localBatch = ''
     localSensor = ''
+    showVisualisation.value = false
 }
 
 function getDataSet() {
@@ -76,6 +76,8 @@ function getDataSet() {
         dataValues.value = activeDataSet.value['values']
         dataTimestamps.value = activeDataSet.value['timestamps']
 
+        console.log(showVisualisation)
+
         console.log(activeBatch.value)
         console.log(activeSensor.value)
 
@@ -83,6 +85,9 @@ function getDataSet() {
         console.log(dataUnit.value)
         console.log(dataValues.value)
         console.log(dataTimestamps.value)
+
+        showVisualisation.value = true
+        console.log(showVisualisation)
     }
 }
 
@@ -143,13 +148,28 @@ function getDataSet() {
 
     <!-- Display / data visualisation component -->
 
-    <div class="mt-6 p-6 h-auto 
-    mockup-window border bg-base-300">
+    <div v-if="showVisualisation" class="mt-6 p-6 mockup-window border bg-base-300">
+    <!-- <div class="mt-6 p-6 max-h-22  -->
 
-
-
-
+    <!-- All this props could be putted in single object -->
+        <Visualisation
+            :batch="activeBatch" 
+            :sensor="activeSensor" 
+            :description="dataDescription"
+            :unit="dataUnit" 
+            :values="dataValues" 
+            :timestamps="dataTimestamps"  />
     </div>
+
+    <!-- Play-test zone -->
+    <!-- <div class="mt-6 p-6 max-h-22  -->
+    <!-- mockup-window border bg-base-300"> -->
+
+    <!-- <BarChart /> -->
+
+    <!-- <Visualisation /> -->
+
+    <!-- </div> -->
 
 
   </section>
