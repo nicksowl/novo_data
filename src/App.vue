@@ -1,5 +1,5 @@
 <script setup>
-import getDataJson from './services/apiGetData'
+// import getDataJson from './services/apiGetData'
 
 import Header from './components/Header.vue'
 import DashBoard from './components/dashboard/DashBoard.vue'
@@ -19,11 +19,13 @@ import Footer from './components/Footer.vue'
 
 <template>
 
-  <div class="flex flex-col justify-between h-screen">
+  <div class="h-screen">
     <Header />
-    <DashBoard class="h-screen" />
+    <DashBoard class="" />
     <Footer />
   </div>
+
+  
 
 </template>
 
