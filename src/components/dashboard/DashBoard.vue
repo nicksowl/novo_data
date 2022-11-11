@@ -1,11 +1,7 @@
 <script setup>
 import { ref } from "vue";
 import Visualisation from "./Visualisation.vue";
-// Get json file using HTTP REST fetch or axios
-// import apiGetData from "../services/apiGetData";
-// Add check if json file is there and imported properly
-// import dataJson from '../assets/data/.data.json'
-import dataJson from "../../../public/data/.data.json";
+import dataJson from "../../data/data.json";
 
 // Check if no json file is loaded
 if (!dataJson) {
@@ -92,7 +88,7 @@ const reset = {
   },
 };
 
-// Write case where new visualisation is fired just under depending on new parameters
+// Write case where new visualisation is fired just under old one depending on new parameters
 
 function getDataSet() {
   // Can be an issue here
@@ -116,20 +112,6 @@ function getDataSet() {
 
   }
 }
-
-// depict that data in histogram type of chart as seperate Vue component to which we pass our values
-// pass data to other components and depict it there on the page
-// connect vue charts
-// depict data in vue chart
-// Play around and see what is best
-
-// let activeDataSet = ref([])
-// let activeBatch = ref('')
-// let activeSensor = ref('')
-// let dataDescription = ref('')
-// let dataUnit = ref('')
-// let dataValues = ref({})
-// let dataTimestamps = ref({})
 </script>
 
 <template>
@@ -202,12 +184,6 @@ function getDataSet() {
           </div>
         </div>
 
-        <!-- // 1 min = 1
-// 5 min = 5
-// 30 min = 30
-// 60 min / 1 hour = 60
-// 2 hours = 120 -->
-
         <div v-if="activeBatch">
           <h2 class="text-center">Filter in minutes</h2>
           <select v-model.number="intervalFilter" class="select m-2 select-ghost w-full max-w-xs">
@@ -238,6 +214,7 @@ function getDataSet() {
       class="mt-6 p-6 mockup-window border bg-base-200"
     >
     <p class="text-center text-xs pl-5">Batch - <i>{{ activeBatch }} </i> , Sensor - <i>{{ activeSensor }}</i>, Interval - <i>{{ intervalFilter }} min</i>, Period from <i>{{ dataTimestamps[0] }}</i> to <i>{{ dataTimestamps[dataTimestamps.length - 1] }}</i></p>
+
       <Visualisation
         :batch="activeBatch"
         :sensor="activeSensor"
