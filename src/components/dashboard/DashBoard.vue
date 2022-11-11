@@ -237,7 +237,7 @@ function getDataSet() {
       v-if="showVisualisation"
       class="mt-6 p-6 mockup-window border bg-base-200"
     >
-    <h1 class="pl-5">Batch - {{ activeBatch }} , Sensor - {{ activeSensor }}, Interval - {{ intervalFilter }} min</h1>
+    <p class="text-center text-xs pl-5">Batch - <i>{{ activeBatch }} </i> , Sensor - <i>{{ activeSensor }}</i>, Interval - <i>{{ intervalFilter }} min</i>, Period from <i>{{ dataTimestamps[0] }}</i> to <i>{{ dataTimestamps[dataTimestamps.length - 1] }}</i></p>
       <Visualisation
         :batch="activeBatch"
         :sensor="activeSensor"
