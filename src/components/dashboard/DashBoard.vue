@@ -11,6 +11,21 @@ if (!dataJson) {
 
 const batchesJson = dataJson.data;
 
+// location to batches in json file
+for (let batch in batchesJson) {
+  console.log(batch)
+  for (let sensor in batchesJson[batch]) {
+    console.log(sensor)
+  }
+}
+
+
+
+
+
+
+
+
 // This is how direct access to values looks like
 // console.log(batchesJson.CP400E0102["400E_Pres1"].values[0])
 
@@ -32,6 +47,8 @@ let dataTimestamps = ref({});
 let showVisualisation = ref(false);
 
 let intervalFilter = ref(1);
+
+let showSecondSelection = ref(false);
 
 // Get batch names and sensor names
 for (let name in batchesJson) {
@@ -57,8 +74,7 @@ function getSensorValue(element) {
   localSensor = activeSensor.value;
 }
 
-// drop down menu with preselects time, like 
-// we get array of time and after remove every 5, 10, 100 element depending from time
+// Data filter function
 function getEveryNth(arr, nth) {
   const result = [];
 
@@ -77,6 +93,7 @@ const reset = {
     localBatch = "";
     localSensor = "";
     showVisualisation.value = false;
+    showSecondSelection.value = false;
   },
   batch: function () {
     activeBatch.value = "";
@@ -88,7 +105,37 @@ const reset = {
   },
 };
 
-// Write case where new visualisation is fired just under old one depending on new parameters
+// Add extra data to visualisation
+function addExtraDataSet() {
+  showSecondSelection.value = true;
+
+
+  console.log(localBatch)
+  console.log(localSensor)
+
+  // get this dataset unit
+  let ActiveDataSet = batchesJson[localBatch][localSensor];
+  let ActiveUnit = batchesJson[localBatch][localSensor].unit;
+  console.log(ActiveDataSet)
+  console.log(ActiveUnit)
+
+  // show only batch and sensor that has that unit and is not the same as the one that is already there
+  // not active batch and sensor
+  // only with the same unit
+
+  // for (let name in batchesJson) {
+  //   batchNames.push(name);
+  //   for (let sensor in batchesJson[name]) {
+  //     // if sensor name is already there do not push it. This could be refactored since there might be bugs.
+  //     if (!sensorNames.includes(sensor)) {
+  //       sensorNames.push(sensor);
+  //     }
+  //   }
+  // }
+
+
+
+}
 
 function getDataSet() {
   // Can be an issue here
@@ -112,11 +159,14 @@ function getDataSet() {
 
   }
 }
+
 </script>
 
 <template>
   <section class="p-6">
     <div class="p-6 mockup-window border bg-base-200">
+
+      <!-- Selection top bar -->
       <div class="flex space-x-4">
         <button
           @click="reset.batch()"
@@ -139,6 +189,22 @@ function getDataSet() {
           {{ intervalFilter }}Min
         </button>
 
+        <button
+          v-if="activeBatch && activeSensor"
+          @click="getDataSet()"
+          class="btn btn-active btn-primary"
+        >
+          See data
+        </button>
+
+        <button
+          v-if="activeBatch && activeSensor"
+          @click="addExtraDataSet()"
+          class="btn btn-info"
+        >
+          Add Extra
+        </button>
+
         <button v-if="activeBatch" @click="reset.all()" class="btn btn-square btn-error">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -156,16 +222,46 @@ function getDataSet() {
           </svg>
         </button>
 
-        <button
-          v-if="activeBatch && activeSensor"
-          @click="getDataSet()"
-          class="btn btn-active btn-primary"
-        >
-          See data
-        </button>
       </div>
 
-      <div class="pt-6 flex">
+      <!-- User selection 1 -->
+      <div v-if="!showSecondSelection" class="pt-6 flex">
+        <div>
+          <h2 class="text-center">Sample</h2>
+          <div v-for="batchName in dataJson['data']">
+            <button @click="getBatchValue()" id="batchButton" class="m-2 btn">
+              {{ batchName }}
+            </button>
+          </div>
+        </div>
+
+        <div v-if="activeBatch">
+          <h2 class="text-center">Sensor</h2>
+          <div v-for="sensorName in sensorNames">
+            <button @click="getSensorValue()" id="sensorButton" class="m-2 btn">
+              {{ sensorName }}
+            </button>
+          </div>
+        </div>
+
+        <div v-if="activeBatch">
+          <h2 class="text-center">Filter in minutes</h2>
+          <select v-model.number="intervalFilter" class="select m-2 select-ghost w-full max-w-xs">
+            <option selected>1</option>
+            <option>3</option>
+            <option>5</option>
+            <option>10</option>
+            <option>30</option>
+            <option>60</option>
+            <option>120</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- User selection 2 -->
+      <div v-if="showSecondSelection" class="pt-6 flex">
+        <p>This is second selector menu</p>
         <div>
           <h2 class="text-center">Sample</h2>
           <div v-for="batchName in batchNames">
@@ -198,6 +294,8 @@ function getDataSet() {
         </div>
 
       </div>
+      
+
     </div>
 
     <!-- Display / data visualisation component -->

@@ -1,4 +1,3 @@
-
 <script setup>
 import Chart from 'chart.js/auto'
 
