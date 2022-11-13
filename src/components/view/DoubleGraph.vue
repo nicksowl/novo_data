@@ -22,6 +22,9 @@ const randomBackgroundColor = () => {
 let backgroundColorA05 = randomBackgroundColor();
 let backgroundColorA1 = backgroundColorA05.replace('0.5', '1');
 
+
+// edit legend to look like top
+
 onMounted(() => {    
     const ctx = document.getElementById('myChart');
 
@@ -50,7 +53,7 @@ onMounted(() => {
                         }
                     },
                     grid: {
-                        display: false,
+                        display: true,
                     }
                 },
                 x: {
@@ -68,7 +71,7 @@ onMounted(() => {
             },
             plugins: {
                 legend: {
-                    display: false
+                    display: true,
                 },
                 filter: {
                     propogate: true

@@ -6,7 +6,14 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'monserrat': ['Monserrat', 'sans-serif'],
+    }
   },
+  plugins: [
+    // require("@tailwindcss/typography"),
+    require("daisyui")
+  ],
   daisyui: {
     themes: [
       {
@@ -23,10 +30,11 @@ module.exports = {
         },
       },
     ],
+    theme: 'light',
   },
-  plugins: [
-    require("daisyui")
-  ],
+  daisyui: {
+    darkTheme: 'light',
+  },
 }
 
 
