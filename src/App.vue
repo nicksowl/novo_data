@@ -4,10 +4,23 @@ import Selector from './components/view/SelectorView.vue'
 import Window from './components/dashboard/Window.vue'
 import Footer from './components/Footer.vue'
 
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { animate } from "motion";
 
 let view = ref('view')
+
+onMounted(() => {
+  // Animation on load
+  const viewComponent = document.getElementById('view')
+  animate(viewComponent, { opacity: 0 }, { easing: "ease-out"})
+  setTimeout(() => {
+    animate(viewComponent, { opacity: 1 }, { easing: "ease-out"})
+  }, 300)
+})
+
+// Change between views - View, and Dashboard
 function changeView(input) {
+  const component = document.getElementById(input)
   view.value = input
 }
 
@@ -15,11 +28,12 @@ function changeView(input) {
 
 <template>
 
-  <div class="">
+  <div class="h-screen">
+
     <!-- <Header /> -->
     <div class="navbar bg-neutral text-neutral-content">
     <div class="flex-1">
-      <a class="btn btn-ghost normal-case text-xl" href=".">Novo Data</a>
+      <a class="btn btn-ghost normal-case text-xl" href=".">⚗️ Novo Data</a>
     </div>
     <div class="flex-none">
       <ul class="menu menu-horizontal p-0">
@@ -27,9 +41,13 @@ function changeView(input) {
         <li><a @click="changeView('dashboard')">Dashboard</a></li>
       </ul>
     </div>
-  </div>
-    <Selector v-if="view === 'view'" class="h-screen" />
-    <Window v-if="view === 'dashboard'" class="" />
+    </div>
+
+    <!-- View -->
+    <Selector id="view" v-if="view === 'view'" class="min-h-screen" />
+    <!-- Dashboard -->
+    <Window id="dashboard" v-if="view === 'dashboard'" class="min-h-screen" />
+    
     <Footer />
   </div>
 
