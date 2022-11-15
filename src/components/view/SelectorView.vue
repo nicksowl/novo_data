@@ -138,7 +138,6 @@ function getDataSet() {
         alert("Selections must be of the same unit.");
       } else {
         if (intervalFilter.value > 1) {
-          console.log("second batch");
           // First batch
           activeDataSet.value = batchesJson[localBatch][localSensor];
           dataDescription.value = activeDataSet.value["description"];
@@ -243,8 +242,11 @@ function addExtraDataSet() {
 
 <template>
   <section class="p-6">
+
+    <h1 class="text-3xl font-semibold mb-4">View</h1>
+
     <!-- Selection -->
-    <div class="p-6 rounded-lg border bg-base-200 h-full">
+    <div class="p-6 rounded-lg border dark:text-gray-400 shadow-md dark:bg-neutral dark:border-gray-700 bg-base-200 h-full">
       <!-- Progress bar -->
       <div class="flex flex-col">
         <!-- First / Main line -->
@@ -420,7 +422,7 @@ function addExtraDataSet() {
     <!-- Single Visualisation - Line chart with Chart.js -->
     <div
       v-if="showSingleVisualisation"
-      class="mt-6 p-6 rounded-lg border bg-base-200"
+      class="mt-6 p-6 rounded-lg border dark:text-white shadow-md dark:bg-neutral dark:border-gray-700 bg-base-200"
     >
       <!-- Should go in charts under label with coloring, it also mutates filter daata next to diagram-->
       <p class="text-center text-xs pl-5">
@@ -443,7 +445,7 @@ function addExtraDataSet() {
     <!-- Double Visualisation - Line chart with Chart.js -->
     <div
       v-if="showDoubleVisualisation"
-      class="mt-6 p-6 rounded-lg border bg-base-200"
+      class="mt-6 p-6 rounded-lg border dark:text-white shadow-md dark:bg-neutral dark:border-gray-700 bg-base-200"
     >
       <!-- Should go in charts under label with coloring, it also mutates filter daata next to diagram-->
       <p class="text-center text-xs pl-5">

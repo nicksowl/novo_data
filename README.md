@@ -10,3 +10,9 @@ This app has 2 views:
 
 To-do:
  - Check if postcss is connected to vite config
+
+
+ Moodboard:
+ https://www.figma.com/file/SAWLCepAJyVulnfaPdVVzx/Novo-Data?node-id=0%3A1
+
+ 
