@@ -12,9 +12,6 @@ if (!dataJson) {
 
 const batchesJson = dataJson.data;
 
-// This is how direct access to values looks like
-// console.log(batchesJson.CP400E0102["400E_Pres1"].values[0])
-
 let batchNames = [];
 let sensorNames = [];
 
@@ -212,6 +209,12 @@ function getDataSet() {
         );
       } else {
         activeDataSet.value = batchesJson[localBatch][localSensor];
+
+        // console.log('local storage is not consistent with the data :(');
+        // localStorage.setItem("batch", localBatch);
+        // localStorage.setItem("sensor", localSensor);
+        // localStorage.setItem("filter", intervalFilter.value);
+
         dataDescription.value = activeDataSet.value["description"];
         dataUnit.value = activeDataSet.value["unit"];
         dataValues.value = activeDataSet.value["values"];

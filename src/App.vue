@@ -1,7 +1,7 @@
 <script setup>
 // import Header from './components/Header.vue'
 import Selector from './components/view/SelectorView.vue'
-import Window from './components/dashboard/Window.vue'
+import Window from './components/dashboard/WindowView.vue'
 import Footer from './components/Footer.vue'
 
 import { ref, onMounted } from 'vue'
