@@ -245,11 +245,12 @@ function addExtraDataSet() {
 
 <template>
   <section class="p-6">
-
     <h1 class="text-3xl font-semibold mb-4">View</h1>
 
     <!-- Selection -->
-    <div class="p-6 rounded-lg border dark:text-gray-400 shadow-md dark:bg-neutral dark:border-gray-700 bg-base-200 h-full">
+    <div
+      class="p-6 rounded-lg border dark:text-gray-400 shadow-md dark:bg-neutral dark:border-gray-700 bg-base-200 h-full"
+    >
       <!-- Progress bar -->
       <div class="flex flex-col">
         <!-- First / Main line -->
@@ -263,7 +264,12 @@ function addExtraDataSet() {
             {{ activeSensor }}
           </p>
           <!-- No input status icon -->
-          <p v-if="!activeBatch" class="text-3xl h-12 ml-2 mt-2">👇</p>
+          <p
+            v-if="!activeBatch"
+            class="h-12 ml-2 mt-2 pt-4 text-md font-light text-gray-500 dark:text-gray-400"
+          >
+            Start by selecting batch bellow
+          </p>
           <!-- Filter -->
           <p v-if="activeBatch" class="btn btn-warning">
             {{ intervalFilter }} Min
@@ -277,7 +283,7 @@ function addExtraDataSet() {
               !showDoubleVisualisation
             "
             @click="getDataSet()"
-            class="btn btn-accent"
+            class="btn btn-accent text-md font-bold"
           >
             See data
           </button>
@@ -290,7 +296,7 @@ function addExtraDataSet() {
               !showSingleVisualisation
             "
             @click="addExtraDataSet()"
-            class="btn btn-accent"
+            class="btn btn-accent text-md font-bold"
           >
             Add Extra set
           </button>
@@ -319,7 +325,12 @@ function addExtraDataSet() {
           class="pt-2 space-x-2"
         >
           <!-- No input status icon -->
-          <p v-if="!secondSelectionBatch" class="text-3xl h-12 ml-2 mt-2">👇</p>
+          <p
+            v-if="!secondSelectionBatch"
+            class="h-10 ml-2 mt-2 pt-4 text-md font-light text-gray-500 dark:text-gray-400"
+          >
+            Select additional data entry bellow
+          </p>
           <!-- Batch -->
           <button
             @click=""
@@ -347,7 +358,9 @@ function addExtraDataSet() {
         <div v-if="!showSecondSelection" class="pt-6 flex">
           <!-- Batch -->
           <div>
-            <h2 class="text-center">Batch</h2>
+            <h2 class="text-center font-light text-gray-500 dark:text-gray-400">
+              Batch
+            </h2>
             <div v-for="batchName in batchNames">
               <button @click="getBatchValue()" id="batchButton" class="m-2 btn">
                 {{ batchName }}
@@ -356,7 +369,9 @@ function addExtraDataSet() {
           </div>
           <!-- Sensor -->
           <div v-if="activeBatch">
-            <h2 class="text-center">Sensor</h2>
+            <h2 class="text-center font-light text-gray-500 dark:text-gray-400">
+              Sensor
+            </h2>
             <div v-for="sensorName in sensorNames">
               <button
                 @click="getSensorValue()"
@@ -369,7 +384,9 @@ function addExtraDataSet() {
           </div>
           <!-- Filter -->
           <div v-if="activeBatch">
-            <h2 class="text-center">Sample Interval in minutes</h2>
+            <h2 class="text-center font-light text-gray-500 dark:text-gray-400">
+              Sample Interval in minutes
+            </h2>
             <select
               v-model.number="intervalFilter"
               class="select m-2 select-ghost w-full max-w-xs"
@@ -451,13 +468,17 @@ function addExtraDataSet() {
       class="mt-6 p-6 rounded-lg border dark:text-white shadow-md dark:bg-neutral dark:border-gray-700 bg-base-200"
     >
       <!-- Should go in charts under label with coloring, it also mutates filter daata next to diagram-->
-      <p class="text-center text-xs pl-5">
+      <p
+        class="text-center text-xs pl-5 font-light text-gray-500 dark:text-gray-400"
+      >
         Batch 1 - <i>{{ activeBatch }} </i> , Sensor - <i>{{ activeSensor }}</i
         >, Interval - <i>{{ intervalFilter }} min</i>, Period from
         <i>{{ dataTimestamps[0] }}</i> to
         <i>{{ dataTimestamps[dataTimestamps.length - 1] }}</i>
       </p>
-      <p class="text-center text-xs pl-5">
+      <p
+        class="text-center text-xs pl-5 font-light text-gray-500 dark:text-gray-400"
+      >
         Batch 2 - <i>{{ secondSelectionBatch }} </i> , Sensor -
         <i>{{ secondSelectionSensor }}</i
         >, Interval - <i>{{ intervalFilter }} min</i>, Period from
@@ -480,6 +501,5 @@ function addExtraDataSet() {
         :secondTimestamps="secondSelectionTimestamps"
       />
     </div>
-    
   </section>
 </template>

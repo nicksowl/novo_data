@@ -132,15 +132,15 @@ for (let batch in dataJson.data) {
 }
 
 // get total amount of samples for each sensor
-let totalSamples = 0;
-let sensors = [];
-for (let batch in dataJson.data) {
-  // console.log(batch)
-  for (let sensor in dataJson.data[batch]) {
-    console.log(sensor);
-  }
-}
-console.log(totalSamples);
+// let totalSamples = 0;
+// let sensors = [];
+// for (let batch in dataJson.data) {
+//   // console.log(batch)
+//   for (let sensor in dataJson.data[batch]) {
+//     console.log(sensor);
+//   }
+// }
+// console.log(totalSamples);
 </script>
 
 <template>
@@ -193,17 +193,19 @@ console.log(totalSamples);
     <!-- Total collected samples visualisation -->
     <div class="flex justify-center">
       <div
-        class="w-1/2 mt-12 p-6 rounded-lg border dark:text-white shadow-md dark:bg-neutral dark:border-gray-700 bg-base-200"
+        class="w-1/2 mt-12 p-1 rounded-lg border dark:text-white shadow-md dark:bg-neutral dark:border-gray-700 bg-base-200"
       >
-        <h3 class="text-center pt-6 pb-3 sm:text-xl text-md font-semibold">
-          Total samples collected
+        <h3 class="text-center pt-12 mb-2 xl:text-xl text-md font-semibold">
+          Total samples analysed
         </h3>
         <div class="pb-1 flex justify-center">
-          <button class="mb-2 xl:text-3xl text-md font-extrabold btn btn-warning">
+          <button
+            class="mb-2 xl:text-3xl text-md font-extrabold btn btn-warning"
+          >
             48 2342
           </button>
         </div>
-  
+
         <PieWidget />
       </div>
     </div>

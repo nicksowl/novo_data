@@ -21,40 +21,47 @@ const randomBackgroundColor = () => {
 let backgroundColorA05 = randomBackgroundColor();
 let backgroundColorA1 = backgroundColorA05.replace("0.5", "1");
 
-
 onMounted(() => {
   const ctx = document.getElementById("myChart");
   const myChart = new Chart(ctx, {
     type: "doughnut",
     data: {
-        labels: ['AP400E0101', 'AC400E0151', 'XP100A0102', 'ER400E0102', 'AP6540E0101', 'SP420E0101', 'DP400E0123'],
-        datasets: [
-            {
-                label: 'My First Dataset',
-                data: [6000, 3456, 5000, 9876, 10222, 8730, 9123],
-                backgroundColor: 'rgb(251,188,35)',
-                hoverOffset: 4
-            }
-        ],       
-      label: 'Dataset 1',
+      labels: [
+        "AP400E0101",
+        "AC400E0151",
+        "XP100A0102",
+        "ER400E0102",
+        "AP6540E0101",
+        "SP420E0101",
+        "DP400E0123",
+      ],
+      datasets: [
+        {
+          label: "My First Dataset",
+          data: [6000, 3456, 5000, 9876, 10222, 8730, 9123],
+          backgroundColor: "rgb(251,188,35)",
+          hoverOffset: 4,
+        },
+      ],
+      label: "Dataset 1",
       data: [0, 10, 5, 2, 20, 30, 45],
       backgroundColor: backgroundColorA05,
     },
     options: {
-    responsive: true,
-    aspectRatio: 1,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        display: false,
-        position: 'top',
+      responsive: true,
+      aspectRatio: 1,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false,
+          position: "top",
+        },
+        title: {
+          display: false,
+          text: "Chart.js Doughnut Chart",
+        },
       },
-      title: {
-        display: false,
-        text: 'Chart.js Doughnut Chart'
-      }
-    }
-  }
+    },
   });
 });
 </script>

@@ -10,60 +10,76 @@
 
 ## About The Project
 
-This project is created as a part of the assignment, where it's been requested to create SPA application that visualises data from different production sensors. Data comes in JSON file, that is stored locally, and consists of batches and sensors. Every sensor is supplied with values, timestamps, unit and description properties.
+This project is created as a part of the assignment, where it's been requested to create SPA application that visualises data from different production sensors. Data comes in JSON file, which is stored locally, and consists of batches and sensors. Every sensor is supplied with values, timestamps, unit and description properties.
 
-Novo data consists of 2 views - Veiw and Dashboard. Views can be navigared in top navigation bar.
-View allows to visualise particular data set, apply interval filter and compare one data set with another different dataset that uses the same unit of measure. Visualisation is done in line chart. Also there is fade-out-in animation on page load.
-Dashboard view present aggrigated information from data ....
+Novo data consists of 2 views - Veiw and Dashboard. Views can be navigated at the top navigation bar.
 
+**View** allows to select and visualise data from sensor, apply interval filter and compare one dataset with another different set that uses the same unit of measure. Visualisation is done using line chart. Also there is fade-out-in animation on the page load.
 
-Views is a dataset picker/filter and picked data visualisation. Dashboard is a extraction view of importand data, comparison between batches. 
-As an idea, data depicted on this page can lead to pages that inholds specific and detailed information.
+**Dashboard** view presents aggrigated information based on data from JSON file. Data is dynamic and meant to present correlations or differences between data. In V1 it includes overview, lowest and highest measures. Pie chart with total samples collected. As an idea represented numbers could navigate to more detailed report.
 
-
-## Process
-
-Moodboard:
-https://www.figma.com/file/SAWLCepAJyVulnfaPdVVzx/Novo-Data?node-id=0%3A1
-
-* Inspiration from Youtube TV app and PowerBi. You can use this app with one finger. Simple and ituitive.
-* Application target screen - laptop, tablet.
+Application is fully responsive, although it is inteded to be used on big screens and tablets. Visual design is accessible and includes dark theme. Navigation is designed with the idea that it can be used with just one finger.
 
 ### Built With
 
 * Vite
 * Vanilla JavaScript
-* Vue3 with Composition API and script setup.
+* Vue3 with Composition API and script setup
 * Tailwindcss, DaisyUI
+* PostCSS with autoprefixer
 * Chart.js
-* Vitest or not 
+* Eslint
+* Vitest (?)
+
+## Process
+
+
+
+Moodboard:
+https://www.figma.com/file/SAWLCepAJyVulnfaPdVVzx/Novo-Data?node-id=0%3A1
+
+* Inspiration from Youtube TV app and PowerBi. You can use this app with one finger. Simple and ituitive.
+* Reuirements specifications
+* components and visualisation, widgets, vue components
+* css and tailwind
+
 
 ## Getting Started
 
-...
-
 ### Prerequisites
 
-Machine with latest npm and Node on board, plus Github.
+Machine with latest Node and npm on board, plus connection to Github via SSH.
 
 ### Installation
+Clone reposotorium.
 
-Clone reposotory
- ```sh
-git clone https://github.com/your_username_/Project-Name.git
+ ```
+git clone git@github.com:nicksowl/novo_data.git
 ```
-
+CD into project folsed.
 ```
-cd project_folder
+cd novo_data
 ```
+Install dependencies.
 ```
 npm install
 ```
+Run development environment.
 ```
 npm run dev
 ```
 
-### Future development
+### Running production
+Bundle project for production. You can find compiled files in 'dist' folder.
+```
+npm build
+```
+Preview build.
+```
+npm run preview
+```
+
+## Future development
 - Use browser local storage for personalised view in dashboard based on searches.
 - In dashboard, click on numbers/data redirects to relevant detailed report.
 - In dashboard, pie visualisation of total collected samples for each sensor has proper logic.
@@ -73,7 +89,13 @@ npm run dev
 - Proper error messages for use edge cases.
 - Integration of testings.
 - Refactoring and optimising code and data handeling.
-- Implement fetching live JSON file.
+- Implement fetching of live JSON file with axios of fetch.
 - Connection with backend system.
-- Visual design system, with samestyled components. Use newest Vuetify?
+- Visual design system, with samestyled components. Configured global styles with tailwind config. Use of newest Vuetify as component library?
+- Performance optimisation.
+- Architecture for scalability.
+- Implementation of state manager, like Pinia or Vuex for data handeling.
+- Implementation of TypeScript.
 
+## Conclusion
+...
