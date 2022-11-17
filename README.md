@@ -29,7 +29,7 @@ The application is fully responsive, although it is intended to be used on big s
 * PostCSS with autoprefixer
 * Chart.js
 * Eslint
-* Vitest (?)
+* Cypress E2E
 
 ## Process
 
