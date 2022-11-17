@@ -63,14 +63,22 @@ function getSensorValue(element) {
   activeSensor.value = event.currentTarget.textContent;
   localSensor = activeSensor.value;
 }
+const getSecondSelection = {
+  batch: function (e) {
+    secondSelectionBatch.value = event.currentTarget.textContent;
+  },
+  sensor: function (e) {
+    secondSelectionSensor.value = event.currentTarget.textContent;
+  },
+};
+
+
 // Apply filter (Helper function)
 function getEveryNth(arr, nth) {
   const result = [];
-
   for (let i = 0; i < arr.length; i += nth) {
     result.push(arr[i]);
   }
-
   return result;
 }
 
@@ -224,16 +232,6 @@ function getDataSet() {
     }
   }
 }
-
-const getSecondSelection = {
-  batch: function (e) {
-    secondSelectionBatch.value = event.currentTarget.textContent;
-  },
-  sensor: function (e) {
-    secondSelectionSensor.value = event.currentTarget.textContent;
-  },
-};
-
 // Add extra data layer to visualisation
 function addExtraDataSet() {
   showSecondSelection.value = true;
@@ -501,5 +499,6 @@ function addExtraDataSet() {
         :secondTimestamps="secondSelectionTimestamps"
       />
     </div>
+    
   </section>
 </template>

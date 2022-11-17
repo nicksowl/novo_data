@@ -1,7 +1,7 @@
 <script setup>
 // import Header from './components/Header.vue'
-import Selector from "./components/view/SelectorView.vue";
-import Window from "./components/dashboard/WindowView.vue";
+import SelectorView from "./components/view/SelectorView.vue";
+import WindowView from "./components/dashboard/WindowView.vue";
 import Footer from "./components/Footer.vue";
 
 import { ref, onMounted } from "vue";
@@ -41,9 +41,9 @@ function changeView(input) {
     </div>
 
     <!-- View -->
-    <Selector id="view" v-if="view === 'view'" class="min-h-screen" />
+    <SelectorView id="view" v-if="view === 'view'" class="min-h-screen" />
     <!-- Dashboard -->
-    <Window id="dashboard" v-if="view === 'dashboard'" class="min-h-screen" />
+    <WindowView id="dashboard" v-if="view === 'dashboard'" class="min-h-screen" />
 
     <Footer />
   </div>

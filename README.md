@@ -35,9 +35,11 @@ The application is fully responsive, although it is intended to be used on big s
 
 The project started with research and the creation of project specifications. These specifications are - SPA, semantic and responsible, simple and intuitive, documented, modular, scalable, deployable and testable.
 
-[Moodboard and inspiration (figma).](https://www.figma.com/file/SAWLCepAJyVulnfaPdVVzx/Novo-Data?node-id=0%3A1)
+[Process (figma).](https://www.figma.com/file/SAWLCepAJyVulnfaPdVVzx/Novo-Data?node-id=0%3A1)
 
 Primary inspiration came from PowerBI and Youtube application for TV.
+
+![Tux, the Linux mascot](/public/process/app-structure-v1-512.png)
 
 ## Getting Started
 
