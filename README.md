@@ -83,12 +83,14 @@ It is divided into versions based on necessity and categories.
 V1.5
 - Optimisation
   - Performance optimisation and code refactoring.
+    - Working and mapping batches and sensors smarter.
   - Architecture for scalability.
   - Improved logic behind double data sources view. Take into consideration different timestamps.
   - In the dashboard vie, the pie visualisation of the total collected samples for each sensor has proper logic.
-- Integration of tests and TDD.
+- Integration of tests. E2E, Vue components, JavaScript functions.
 - Integration with backend system and implementation of Axios or fetch for async JSON fetching.
 - Proper error messages for the user edge cases.
+- Move helper functions to external folder.
 
 V2
 - Implementation of TypeScript.
@@ -104,5 +106,6 @@ V3
 - Animation between views.
 
 V4
-- Widgets builder.
+- User widgets builder.
 - Personalised widgets based on application use.
+- Live data.
