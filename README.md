@@ -89,10 +89,11 @@ V1.5
   - Architecture for scalability.
   - Improved logic behind double data sources view. Take into consideration different timestamps.
   - In the dashboard vie, the pie visualisation of the total collected samples for each sensor has proper logic.
-- Integration of tests. E2E, Vue components, JavaScript functions.
+- Richer integration of tests. E2E, Vue components, JavaScript helper functions functions.
 - Integration with backend system and implementation of Axios or fetch for async JSON fetching.
 - Proper error messages for the user edge cases.
 - Move helper functions to external folder.
+- Implement rounting between views.
 
 V2
 - Implementation of TypeScript.
